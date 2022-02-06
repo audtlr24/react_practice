@@ -1,21 +1,22 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Sample from '../components/Sample';
 import {getPost,getUsers} from '../modules/sample';
 
 const {useEffect} = React;
 const SampleContainer = ({
-    getPost,
-    getUsers,
-    post,
-    users,
     loadingPost,
     loadingUsers
 }) => {
+
+    const post = useSelector(state=>state.sample.post);
+    const users = useSelector(state=>state.sample.users);
+    const dispatch = useDispatch();
+
     useEffect(()=>{
-        getPost(1);
-        getUsers(1);
-    },[getPost,getUsers]);
+        dispatch(getPost(1));
+        dispatch(getUsers(1));
+    },[dispatch]);
 
     return(
         <Sample
@@ -27,15 +28,4 @@ const SampleContainer = ({
     );
 };
 
-export default connect(
-    ({sample,loading}) => ({
-        post: sample.post,
-        users: sample.users,
-        loadingPost: loading['sample/GET_POST'],
-        loadingUsers: loading['sample/GET_USERS']
-    }),
-    {
-        getPost,
-        getUsers
-    }
-)(SampleContainer);
+export default SampleContainer;
