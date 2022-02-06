@@ -1,6 +1,6 @@
 import React, {useCallback} from 'react';
 import { useSelector,useDispatch } from 'react-redux';
-import {increaseAsync,decreaseAsync} from '../modules/counter'
+import {increaseAsync,decreaseAsync} from '../modules/counter_saga'
 
 const Counter = ()=>{
 
