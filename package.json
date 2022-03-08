@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "react-toastify": "^8.2.0",
     "yarn": "^1.22.17"
   }
 }
